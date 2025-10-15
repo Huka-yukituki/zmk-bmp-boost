@@ -3,3 +3,5 @@ include:
     shield: tester_pro_micro
   - board: bmp_boost
     shield: settings_reset
+  - board: bmp_boost          # ← ★これを追加！
+    shield: tester_direct1
