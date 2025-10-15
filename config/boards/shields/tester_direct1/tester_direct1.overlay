@@ -2,11 +2,9 @@
 
 / {
     chosen {
-        /* このシールドのkscanノードをZMKに使わせる */
         zmk,kscan = &kscan0;
     };
 
-    /* 1キー直結構成：D2(P0.18) ↔ スイッチ ↔ GND */
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-direct";
         label = "TESTER_DIRECT1";
