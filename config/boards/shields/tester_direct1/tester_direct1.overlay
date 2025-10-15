@@ -1,22 +1,12 @@
-/dts-v1/;
 #include <zephyr/dt-bindings/gpio/gpio.h>
 
-&gpio0 {
-    status = "okay";
-};
+/ {
+    chosen { zmk,kscan = &kscan0; };
 
-
- / {
-    chosen {
-        zmk,kscan = &kscan0;
-    };
-
-    /* 1キー直結：P0.18（D2）→ GND */
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-direct";
         label = "TESTER_DIRECT1";
-        /* flagsはまず数値0で（内部PUは後で足す）*/
-        input-gpios = <&gpio0 18 0>;
+        input-gpios = <&{/soc/gpio@50000000} 18 0>;
     };
 
     keymap {
