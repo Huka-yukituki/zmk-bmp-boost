@@ -1,20 +1,18 @@
 #include <zephyr/dt-bindings/gpio/gpio.h>
 
 / {
-    chosen {
-        zmk,kscan = &kscan0;
-    };
+    chosen { zmk,kscan = &kscan0; };
 
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-direct";
         label = "TESTER_DIRECT1";
-        //input-gpios = <&gpio0 18 GPIO_ACTIVE_LOW>;
+#if 0
+        input-gpios = <&gpio0 18 GPIO_ACTIVE_LOW>;
+#endif
     };
 
     keymap {
         compatible = "zmk,keymap";
-        default_layer {
-            bindings = <&kp A>;
-        };
+        default_layer { bindings = <&kp A>; };
     };
 };
