@@ -1,5 +1,4 @@
 #include <zephyr/dt-bindings/gpio/gpio.h>
-#include <dt-bindings/zmk/keys.h>   /* ← 追加 */
 
  / {
     chosen { zmk,kscan = &kscan0; };
@@ -8,12 +7,15 @@
         compatible = "zmk,kscan-gpio-direct";
         label = "TESTER_DIRECT1";
 #if 0
+        /* まずはGPIO参照の問題だけ切り分けるので、必要に応じてここは後で戻す */
         input-gpios = <&gpio0 18 GPIO_ACTIVE_LOW>;
 #endif
     };
 
+#if 0
     keymap {
         compatible = "zmk,keymap";
         default_layer { bindings = <&kp A>; };
     };
+#endif
 };
