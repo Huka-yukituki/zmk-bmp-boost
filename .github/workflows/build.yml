@@ -2,5 +2,7 @@ name: Build ZMK firmware
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
+
+- run: cat config/boards/shields/tester_direct1/tester_direct1.overlay
   build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
