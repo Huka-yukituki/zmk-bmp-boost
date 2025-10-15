@@ -8,8 +8,8 @@
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-direct";
         label = "TESTER_DIRECT1";
-
-        input-gpios = <&gpio0 18 0>;
+        /* D2(P0.18) は BMPコネクタ上の 5番ピン */
+        input-gpios = <&bmp 5 GPIO_ACTIVE_LOW>;
     };
 
     keymap {
