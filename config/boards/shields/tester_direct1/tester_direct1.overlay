@@ -1,10 +1,10 @@
 /dts-v1/;
 #include <zephyr/dt-bindings/gpio/gpio.h>
 
-/* 既存ノードの可視化（shield側から参照できないケースの回避） */
 &gpio0 {
     status = "okay";
 };
+
 
  / {
     chosen {
