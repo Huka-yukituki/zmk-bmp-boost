@@ -2,6 +2,42 @@ name: Build ZMK firmware
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
-  run: cat config/boards/shields/tester_direct1/tester_direct1.overlay
+  # まずはリポジトリ側のファイル実体を表示
+  debug-overlay:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Show HEAD and tree
+        run: |
+          git rev-parse HEAD
+          ls -la
+          ls -la config/boards/shields/tester_direct1 || true
+
+      # 改行/不可視文字チェック用（BOMやCRLFの検出）
+      - name: Dump overlay (text + hex)
+        run: |
+          echo "==== tester_direct1.overlay (text) ===="
+          sed -n '1,200p' config/boards/shields/tester_direct1/tester_direct1.overlay
+          echo
+          echo "==== hexdump head (64 bytes) ===="
+          head -c 64 config/boards/shields/tester_direct1/tester_direct1.overlay | hexdump -C || true
+          echo
+          echo "==== file command ===="
+          file config/boards/shields/tester_direct1/tester_direct1.overlay || true
+
+      - name: Also show zmk.yml (if any)
+        run: |
+          echo "==== tester_direct1/zmk.yml (if present) ===="
+          sed -n '1,120p' config/boards/shields/tester_direct1/zmk.yml || true
+
+      - name: Show workflow include (if you use include-mode)
+        run: |
+          echo "==== .github/workflows/build.yml (this file) ===="
+          sed -n '1,200p' .github/workflows/build.yml || true
+
+  # いつものZMK共通ワークフローを呼ぶ（debug の後に実行）
   build:
+    needs: debug-overlay
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
