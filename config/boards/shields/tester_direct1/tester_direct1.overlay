@@ -10,6 +10,7 @@
         input-gpios = <&gpio0 18 GPIO_ACTIVE_LOW>;
 #endif
     };
+    
 
     keymap {
         compatible = "zmk,keymap";
