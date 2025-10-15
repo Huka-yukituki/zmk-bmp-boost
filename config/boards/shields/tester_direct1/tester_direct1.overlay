@@ -1,12 +1,15 @@
 #include <zephyr/dt-bindings/gpio/gpio.h>
 
-/ {
+&gpio0 {
+    status = "okay";
+};
+
+ / {
     chosen { zmk,kscan = &kscan0; };
 
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-direct";
         label = "TESTER_DIRECT1";
-        /* P0.18 へ直接アクセス */
         input-gpios = <&gpio0 18 GPIO_ACTIVE_LOW>;
     };
 
