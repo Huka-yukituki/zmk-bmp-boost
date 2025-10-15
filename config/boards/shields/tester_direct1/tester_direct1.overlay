@@ -10,10 +10,9 @@
         input-gpios = <&gpio0 18 GPIO_ACTIVE_LOW>;
 #endif
     };
-    
 
     keymap {
         compatible = "zmk,keymap";
-        default_layer { bindings = <&kp A>; };
+        default_layer { bindings = <&kp 0x04>; };
     };
 };
