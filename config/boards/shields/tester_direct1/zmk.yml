@@ -1,0 +1,3 @@
+build:
+  - board: bmp_boost
+    shield: tester_direct1
