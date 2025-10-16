@@ -6,7 +6,7 @@
             compatible = "zmk,behavior-key-press";
             #binding-cells = <1>;
         };
-    }
+    };
 
     chosen { zmk,kscan = &kscan0; };
 
