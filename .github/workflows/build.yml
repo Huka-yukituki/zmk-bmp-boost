@@ -40,4 +40,4 @@ jobs:
   # いつものZMK共通ワークフローを呼ぶ（debug の後に実行）
   build:
     needs: debug-overlay
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main-next
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@next
