@@ -1,8 +1,7 @@
 #include <dt-bindings/zmk/keys.h>
-
 / {
-    keymap {
-        compatible = "zmk,keymap";
-        default_layer { bindings = <&k A>; };
-    };
+  keymap {
+    compatible = "zmk,keymap";
+    default_layer { bindings = <&kp A>; };
+  };
 };
