@@ -1,18 +1,29 @@
 #include <zephyr/dt-bindings/gpio/gpio.h>
 
 / {
-    /* ★ behaviors ツリーは作らず、直下に超短ノードを定義（長名回避） */
+    /* --- 1) レイヤー系ビヘイビアを Devicetree から削除してアサート回避 --- */
+    behaviors {
+        /delete-node/ momentary_layer;
+        /delete-node/ toggle_layer;
+        /delete-node/ to_layer;
+    };
+
+    /* --- 2) 自前の超短名 key-press を用意（&kp を使わず &k を使う）--- */
     k: b {
         compatible = "zmk,behavior-key-press";
         #binding-cells = <1>;
     };
 
+    /* --- 3) 1キー直結（D2=P0.18）--- */
     chosen { zmk,kscan = &kscan0; };
 
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-direct";
         label = "TESTER_DIRECT1";
         input-gpios = <&gpio0 18 GPIO_ACTIVE_LOW>;
-        /* うまく行かなければ &pro_micro 2 / &bmp 5 に切替 */
+        /* もし未解決なら順に：
+           input-gpios = <&pro_micro 2 GPIO_ACTIVE_LOW>;
+           input-gpios = <&bmp 5 GPIO_ACTIVE_LOW>;
+        */
     };
 };
