@@ -1,11 +1,22 @@
 #include <zephyr/dt-bindings/gpio/gpio.h>
-
 / {
+    behaviors {
+        k: key_press {
+            compatible = "zmk,behavior-key-press";
+            #binding-cells = <1>;
+        };
+    };
+
     chosen { zmk,kscan = &kscan0; };
 
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-direct";
         label = "TESTER_DIRECT1";
+        /* まずは SoC 直指定 */
         input-gpios = <&gpio0 18 GPIO_ACTIVE_LOW>;
+        /* 解決しない場合の切替候補：
+           input-gpios = <&pro_micro 2 GPIO_ACTIVE_LOW>;
+           input-gpios = <&bmp 5 GPIO_ACTIVE_LOW>;
+        */
     };
 };
