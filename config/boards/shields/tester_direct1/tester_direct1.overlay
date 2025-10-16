@@ -7,8 +7,6 @@
         compatible = "zmk,kscan-gpio-direct";
         label = "TESTER_DIRECT1";
 
-        /* D2 = P0.18。bmp コネクタの gpio-map では "5" 割当 */
-        input-gpios = <&bmp 5 GPIO_ACTIVE_LOW>;
+        input-gpios = <&gpio0 18 GPIO_ACTIVE_LOW>;
     };
 };
-
