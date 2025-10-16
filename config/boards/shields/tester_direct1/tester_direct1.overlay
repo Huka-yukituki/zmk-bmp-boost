@@ -1,37 +1,24 @@
 #include <zephyr/dt-bindings/gpio/gpio.h>
-#include <dt-bindings/zmk/keys.h>
-
-/ {
-    /* ZMKの共通behaviorsが見えない環境向けに、最小の &kp を自前定義 */
+/* ※ behaviors/kp を自前定義しておくと &kp 未定義を避けられます（後で外してもOK） */
+ / {
     behaviors {
         kp: key_press {
             compatible = "zmk,behavior-key-press";
             #binding-cells = <1>;
         };
-    };
+    }
 
     chosen { zmk,kscan = &kscan0; };
 
-    /* 1キー直結（1x1行列） */
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-direct";
         label = "TESTER_DIRECT1";
 
-        rows = <1>;
-        columns = <1>;
-
-        /* D2 = P0.18。まずはSoC直指定で確実に通す */
+        /* 1キー直結（D2 = P0.18）*/
         input-gpios = <&gpio0 18 GPIO_ACTIVE_LOW>;
-        /* もし未解決なら順に切替：
+        /* もしここで未解決になるなら順に切替：
            input-gpios = <&pro_micro 2 GPIO_ACTIVE_LOW>;
            input-gpios = <&bmp 5 GPIO_ACTIVE_LOW>;
         */
-    };
-
-    keymap {
-        compatible = "zmk,keymap";
-        default_layer {
-            bindings = <&kp A>;
-        };
     };
 };
