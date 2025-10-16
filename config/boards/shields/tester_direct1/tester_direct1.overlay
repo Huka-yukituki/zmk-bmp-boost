@@ -1,10 +1,18 @@
 #include <zephyr/dt-bindings/gpio/gpio.h>
+
 / {
+    /* ★ behaviors ツリーは作らず、直下に超短ノードを定義（長名回避） */
+    k: b {
+        compatible = "zmk,behavior-key-press";
+        #binding-cells = <1>;
+    };
+
     chosen { zmk,kscan = &kscan0; };
 
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-direct";
         label = "TESTER_DIRECT1";
         input-gpios = <&gpio0 18 GPIO_ACTIVE_LOW>;
+        /* うまく行かなければ &pro_micro 2 / &bmp 5 に切替 */
     };
 };
