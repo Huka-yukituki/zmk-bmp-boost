@@ -1,0 +1,12 @@
+if SHIELD_TEST_SHIELD_VER1
+
+config ZMK_KEYBOARD_NAME
+    default "Tester ver1"
+
+config ZMK_BLE
+    def_bool n
+
+config SETTINGS
+    def_bool n
+
+endif

@@ -1,0 +1,6 @@
+file_format: "1"
+id: test_shield_ver1
+name: TestShieldVer1
+type: shield
+url: https://zmk.dev/docs/troubleshooting/hardware-issues
+requires: [pro_micro]

@@ -1,5 +1,8 @@
 include:
+#  - board: bmp_boost
+#    shield: tester_pro_micro
+#  - board: bmp_boost
+#    shield: settings_reset
+
   - board: bmp_boost
-    shield: tester_pro_micro
-  - board: bmp_boost
-    shield: settings_reset
+    shield: test_shield_ver1
